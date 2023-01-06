@@ -1,0 +1,5 @@
+name: BlockHunt
+version: '${project.version}'
+main: com.github.hank9999.blockhunt.BlockHunt
+api-version: 1.15
+authors: [ hank9999 ]
