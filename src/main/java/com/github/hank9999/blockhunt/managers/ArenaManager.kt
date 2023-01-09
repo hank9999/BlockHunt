@@ -1,6 +1,5 @@
 package com.github.hank9999.blockhunt.managers
 
-import com.github.hank9999.blockhunt.BlockHunt.Companion.plugin
 import com.github.hank9999.blockhunt.enums.BasePath
 import com.github.hank9999.blockhunt.json.JSON.Companion.json
 import com.github.hank9999.blockhunt.types.Arena
@@ -8,12 +7,10 @@ import com.github.hank9999.blockhunt.types.LocationCoordinate
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import java.io.File
-import java.nio.file.Path
 import java.nio.file.Paths
 
 class ArenaManager(name: String) {
-    private val arenaFilePath: Path = Paths.get(plugin?.dataFolder?.path!!, BasePath.Arena.path, "$name.json")
-    private val arenaFile: File = arenaFilePath.toFile()
+    private val arenaFile: File = Paths.get(BasePath.arenaPath.toString(), "$name.json").toFile()
     val name: String = name
     var startLoc: LocationCoordinate? = null
     var endLoc: LocationCoordinate? = null
