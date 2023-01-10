@@ -8,9 +8,6 @@ import com.github.hank9999.blockhunt.utils.Utils.Companion.toColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabExecutor
-import java.util.*
-import java.util.stream.Collectors
-
 
 class MainCommand : TabExecutor {
     override fun onCommand(commandSender: CommandSender, command: Command, s: String, strings: Array<String>): Boolean {
@@ -66,7 +63,7 @@ class MainCommand : TabExecutor {
 
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<String>): List<String> {
         if (args.size <= 1) {
-            return Arrays.stream(Commands).filter { s -> s.startsWith(args[0]) }.collect(Collectors.toList())
+            return commands.filter { it.startsWith(args[0]) }
         }
         if (args.size == 2) {
             when (args[0].lowercase()) {
@@ -85,7 +82,7 @@ class MainCommand : TabExecutor {
     }
 
     companion object {
-        private val Commands = arrayOf("reload", "newarena", "listarena", "arena")
+        private val commands = arrayOf("reload", "newarena", "listarena", "arena")
         private val arenaNamePattern = Regex("^[\\w-_]+\$")
     }
 }
